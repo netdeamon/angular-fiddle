@@ -9,7 +9,8 @@ import { Input,Output } from '@angular/core';
 export class EditorComponent implements OnInit {
   @Output('contentChange') contentEvent:EventEmitter<any> = new EventEmitter();
   @Input('mode') mode:any;
-  content:any;
+  @Input('content') content:any;
+  
   
   constructor() { }
 
