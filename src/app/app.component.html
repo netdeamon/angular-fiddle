@@ -1,21 +1,34 @@
 <div>
   <div class="action-buttons">
-    <button (click)="run()">Run</button>
+    <button class="btn btn-primary" (click)="run()">Run</button>
+    <button class="btn btn-primary" (click)="run()">Save</button>
   </div>
   <div class="table">
     <div class="row">
-      <div class="cell width50">
-          <app-editor mode="html" (contentChange)="htmlChange($event)"></app-editor>
+      <div class="cell width50 html-cell no-border-left"  [class.maximize]="maximize.html">
+          <app-editor mode="html" [content]="'<!-- html -->'" (contentChange)="htmlChange($event)"></app-editor>
+          <div class="maximize_button">
+              <clr-icon shape="resize" (click)="maximizecell('html')"></clr-icon>            
+          </div>
       </div>
-      <div class="cell width50">
-        <app-editor mode="css" (contentChange)="cssChange($event)"></app-editor>
+      <div class="cell width50 css-cell no-border-left no-border-right"  [class.maximize]="maximize.css">
+        <app-editor mode="css" [content]="'/* stylesheet */'"  (contentChange)="cssChange($event)"></app-editor>
+        <div class="maximize_button">
+            <clr-icon shape="resize" (click)="maximizecell('css')"></clr-icon>            
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="cell width50">
-          <app-editor mode="javascript" (contentChange)="jsChange($event)"></app-editor>
+      <div class="cell width50 js-cell no-border-left no-border-top" [class.maximize]="maximize.js">
+          <app-editor mode="javascript" [content]="'/* javascript */'"  (contentChange)="jsChange($event)"></app-editor>
+          <div class="maximize_button">
+              <clr-icon shape="resize" (click)="maximizecell('js')"></clr-icon>            
+          </div>
       </div>
-      <div class="cell width50">
+      <div class="cell width50 demo-cell  no-border-left no-border-top no-border-right" [class.maximize]="maximize.demo">
+        <div class="maximize_button">
+            <clr-icon shape="resize" (click)="maximizecell('demo')"></clr-icon>            
+        </div>
         <!-- <app-demo></app-demo> -->
         <iframe #iframe>
           <!doctype html>
@@ -34,4 +47,11 @@
       </div>
     </div>
   </div>
+</div>
+<div class="console">
+  <ul>
+    <li *ngFor="let log of logs">
+      {{log}}
+    </li>
+  </ul>
 </div>

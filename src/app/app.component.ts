@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { AfterViewInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ViewChild, Inject } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit{
   @ViewChild('iframe') iframe:any;
   title = 'app';
   content = {
@@ -14,7 +16,35 @@ export class AppComponent {
     html:"",
     js:""
   }
+  logs:Array<any> = []
   
+  maximize:any = {
+    demo:false,
+    css:false,
+    js:false,
+    html:false
+  }
+  
+  ngAfterViewInit(){
+    this.overrideConsole();
+  }
+
+  overrideConsole(){
+    this.iframe.nativeElement.contentWindow.console.log = (log:any)=>{
+      this.logs.push(log);
+    }
+  }
+
+  clearConsole(){
+    this.logs = [];
+  }
+
+  maximizecell(type:string){
+    if(this.maximize.hasOwnProperty(type)){
+      this.maximize[type] =! this.maximize[type];
+    }
+  }
+
   cssChange(content:any){
     this.content.css = content;
   }
@@ -32,7 +62,6 @@ export class AppComponent {
   }
 
   private applyJs(){
-    debugger;
     var script = document.createElement('script');
     script.innerText = this.content.js;    
     this.iframe.nativeElement.contentDocument.body.appendChild(script)
@@ -43,9 +72,11 @@ export class AppComponent {
   }
 
   run(){
+    this.clearConsole();
     this.iframe.nativeElement.contentDocument.body.innerHTML = "";
     this.applyCss();
     this.applyHtml();
     this.applyJs();
   }
+  
 }

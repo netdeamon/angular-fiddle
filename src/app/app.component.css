@@ -1,6 +1,7 @@
 .table{
     display: table;
     width: 100%;
+    margin-top:0px;
 }
 .row{
     display: table-row;
@@ -20,4 +21,42 @@ iframe{
     border: 0px;
     margin: 0px;
     padding:0px;
+}
+.action-buttons{
+    margin-left: 16px;
+}
+.html-cell,.css-cell,.js-cell,.demo-cell{
+    position: relative;
+}
+.maximize_button{
+    position: absolute;
+    right: 16px;
+    bottom: 0px;
+    cursor: pointer;
+}
+.maximize_button:hover{
+    transform: scale(1.5)
+}
+.maximize{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+.demo-cell{
+    background: #fff;
+}
+.no-border-left{
+    border-left: none;
+}
+.no-border-right{
+    border-right: none;
+}
+.no-border-top{
+    border-top: none;
+}
+.no-border-bottom{
+    border-bottom: none;
 }
