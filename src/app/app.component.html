@@ -1,7 +1,7 @@
 <div>
   <div class="action-buttons">
     <button class="btn btn-primary" (click)="run()">Run</button>
-    <button class="btn btn-primary" (click)="run()">Save</button>
+    <!-- <button class="btn btn-primary" (click)="run()">Save</button> -->
   </div>
   <div class="table">
     <div class="row">
@@ -50,8 +50,8 @@
 </div>
 <div class="console">
   <ul>
-    <li *ngFor="let log of logs">
-      {{log}}
+    <li class="{{log.type}}" *ngFor="let log of logs">
+      {{log.text}}
     </li>
   </ul>
 </div>

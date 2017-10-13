@@ -31,7 +31,10 @@ export class AppComponent implements AfterViewInit{
 
   overrideConsole(){
     this.iframe.nativeElement.contentWindow.console.log = (log:any)=>{
-      this.logs.push(log);
+      this.logs.push({
+        "text":log,
+        "type":"log"
+      });
     }
   }
 

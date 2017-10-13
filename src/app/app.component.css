@@ -60,3 +60,14 @@ iframe{
 .no-border-bottom{
     border-bottom: none;
 }
+.console ul{
+    padding:0px;
+    margin: 0px;
+    list-style-type: none;
+}
+.console ul li{
+    border-top:1px solid #eee;
+}
+.console ul li.log{
+    color:#111;
+}
