@@ -2,6 +2,12 @@
 
 This is a sample application in angular 4 running html,css and js
 
+## Live demo
+
+You can see the live demo at 
+
+https://netdeamon.github.com/angular-fiddle/
+
 ## Screenshot
 
 <img src="https://raw.githubusercontent.com/netdeamon/angular-fiddle/master/screenshot1.png" alt="screenshot" width="80%"/>
